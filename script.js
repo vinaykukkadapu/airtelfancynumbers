@@ -1,6 +1,6 @@
 // Published Google Sheets URL (Replace this with your published URL)
 const sheetUrl =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_dSU-EDJII8sQsSyNDXqIMOalffOH4NqMk4cGx__2IIE10rL608r4PsaB3IxyrApVxB2xXuX6gYdZ/pub?output=csv";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_dSU-EDJII8sQsSyNDXqIMOalffOH4NqMk4cGx__2IIE10rL608r4PsaB3IxyrApVxB2xXuX6gYdZ/pub?gid=0&single=true&output=csv";
 
 // Function to fetch and display phone numbers
 async function fetchPhoneNumbers() {
