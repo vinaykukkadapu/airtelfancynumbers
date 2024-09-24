@@ -3,24 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ABC Company - Phone Numbers</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Excel Data Display</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Phone Numbers from ABC Company</h1>
-
-      <table id="phone-numbers-table">
-        <thead>
-          <tr>
-            <th>Phone Number</th>
-          </tr>
-        </thead>
-        <tbody id="phone-numbers-body">
-          <!-- Phone numbers will be dynamically added here -->
-        </tbody>
-      </table>
-    </div>
+    <h1>Excel Data</h1>
+    <table id="excel-data">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
     <script src="script.js"></script>
   </body>
