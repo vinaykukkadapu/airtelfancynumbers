@@ -1,44 +1,48 @@
-// Published Google Sheets URL (Replace this with your published URL)
-const sheetUrl =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_dSU-EDJII8sQsSyNDXqIMOalffOH4NqMk4cGx__2IIE10rL608r4PsaB3IxyrApVxB2xXuX6gYdZ/pub?gid=0&single=true&output=csv";
+// Path to the locally stored Excel file in the repository
+const excelFilePath = 'https://raw.githubusercontent.com/vinaykukkadapu/airtelfancynumbers/main/Book1.xlsx';
 
-// Function to fetch and display phone numbers
-async function fetchPhoneNumbers() {
-  try {
-    const response = await fetch(sheetUrl);
-    const data = await response.text();
-    const phoneNumbers = parseCSV(data);
-    displayPhoneNumbers(phoneNumbers);
-  } catch (error) {
-    console.error("Error fetching phone numbers:", error);
-  }
-}
-
-// Function to parse CSV data into an array of phone numbers
-function parseCSV(csvData) {
-  const rows = csvData.split("\n");
-  const phoneNumbers = rows.map((row) => row.split(",")[0]); // Assuming phone numbers are in the first column
-  return phoneNumbers;
-}
-
-// Function to display phone numbers in the HTML
-function displayPhoneNumbers(phoneNumbers) {
-  const phoneNumbersContainer = document.getElementById("phone-numbers");
-
-  // Clear the container first
-  phoneNumbersContainer.innerHTML = "";
-
-  // Loop through phone numbers and display them
-  phoneNumbers.forEach((phone) => {
-    if (phone.trim()) {
-      // Check if phone number is not empty
-      const phoneNumberElement = document.createElement("div");
-      phoneNumberElement.className = "phone-number";
-      phoneNumberElement.textContent = phone;
-      phoneNumbersContainer.appendChild(phoneNumberElement);
+// Fetch the Excel file and read its content
+fetch(excelFilePath)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Error fetching the Excel file: ${response.statusText}`);
     }
+    return response.arrayBuffer(); // Read the file as a binary ArrayBuffer
+  })
+  .then(data => {
+    const workbook = XLSX.read(data, { type: 'array' });
+    const firstSheetName = workbook.SheetNames[0]; // Get the first sheet
+    const worksheet = workbook.Sheets[firstSheetName]; // Get the worksheet
+
+    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }); // Convert the sheet to JSON
+    displayExcelData(jsonData); // Display the data in a table
+  })
+  .catch(error => console.error('Error reading Excel file:', error));
+
+// Function to display Excel data in a table
+function displayExcelData(data) {
+  const tableHead = document.querySelector('#excel-data thead tr');
+  const tableBody = document.querySelector('#excel-data tbody');
+
+  // Clear any existing table content
+  tableHead.innerHTML = '';
+  tableBody.innerHTML = '';
+
+  // Populate table header (first row of Excel file)
+  data[0].forEach(header => {
+    const th = document.createElement('th');
+    th.textContent = header;
+    tableHead.appendChild(th);
+  });
+
+  // Populate table body (remaining rows)
+  data.slice(1).forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach(cell => {
+      const td = document.createElement('td');
+      td.textContent = cell || ''; // Display cell content or empty string if undefined
+      tr.appendChild(td);
+    });
+    tableBody.appendChild(tr);
   });
 }
-
-// Fetch phone numbers on page load
-fetchPhoneNumbers();
