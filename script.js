@@ -29,20 +29,24 @@ function displayExcelData(data) {
   tableBody.innerHTML = '';
 
   // Populate table header (first row of Excel file)
-  data[0].forEach(header => {
-    const th = document.createElement('th');
-    th.textContent = header;
-    tableHead.appendChild(th);
-  });
-
-  // Populate table body (remaining rows)
-  data.slice(1).forEach(row => {
-    const tr = document.createElement('tr');
-    row.forEach(cell => {
-      const td = document.createElement('td');
-      td.textContent = cell || ''; // Display cell content or empty string if undefined
-      tr.appendChild(td);
+  if (data.length > 0) {
+    data[0].forEach(header => {
+      const th = document.createElement('th');
+      th.textContent = header;
+      tableHead.appendChild(th);
     });
-    tableBody.appendChild(tr);
-  });
+
+    // Populate table body (remaining rows)
+    data.slice(1).forEach(row => {
+      const tr = document.createElement('tr');
+      row.forEach(cell => {
+        const td = document.createElement('td');
+        td.textContent = cell || ''; // Display cell content or empty string if undefined
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+  } else {
+    console.log("No data available in the Excel file.");
+  }
 }
