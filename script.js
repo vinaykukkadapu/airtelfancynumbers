@@ -1,6 +1,8 @@
 // Path to the locally stored Excel file in the repository
 const excelFilePath = 'https://raw.githubusercontent.com/vinaykukkadapu/airtelfancynumbers/main/Book1.xlsx';
 
+let jsonData = []; // To store data globally for sorting
+
 // Fetch the Excel file and read its content
 fetch(excelFilePath)
   .then(response => {
@@ -14,7 +16,7 @@ fetch(excelFilePath)
     const firstSheetName = workbook.SheetNames[0]; // Get the first sheet
     const worksheet = workbook.Sheets[firstSheetName]; // Get the worksheet
 
-    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }); // Convert the sheet to JSON
+    jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }); // Convert the sheet to JSON
     displayExcelData(jsonData); // Display the data in a table
   })
   .catch(error => console.error('Error reading Excel file:', error));
@@ -30,9 +32,10 @@ function displayExcelData(data) {
 
   // Populate table header (first row of Excel file)
   if (data.length > 0) {
-    data[0].forEach(header => {
+    data[0].forEach((header, index) => {
       const th = document.createElement('th');
       th.textContent = header;
+      th.addEventListener('click', () => sortTableByColumn(index)); // Add click event for sorting
       tableHead.appendChild(th);
     });
 
@@ -49,4 +52,29 @@ function displayExcelData(data) {
   } else {
     console.log("No data available in the Excel file.");
   }
+}
+
+// Function to sort table by a specific column
+function sortTableByColumn(columnIndex) {
+  const isAscending = tableHead.children[columnIndex].classList.contains('asc'); // Check current sort direction
+  const sortedData = jsonData.slice(1).sort((a, b) => {
+    const cellA = a[columnIndex] ? a[columnIndex].toString().toLowerCase() : '';
+    const cellB = b[columnIndex] ? b[columnIndex].toString().toLowerCase() : '';
+    
+    if (cellA < cellB) return isAscending ? -1 : 1;
+    if (cellA > cellB) return isAscending ? 1 : -1;
+    return 0;
+  });
+
+  // Toggle sort direction
+  if (isAscending) {
+    tableHead.children[columnIndex].classList.remove('asc');
+    tableHead.children[columnIndex].classList.add('desc');
+  } else {
+    tableHead.children[columnIndex].classList.remove('desc');
+    tableHead.children[columnIndex].classList.add('asc');
+  }
+
+  // Display sorted data
+  displayExcelData([jsonData[0], ...sortedData]);
 }
