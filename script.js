@@ -2,7 +2,6 @@
 const excelFilePath = 'https://raw.githubusercontent.com/vinaykukkadapu/airtelfancynumbers/main/Book1.xlsx';
 
 let jsonData = []; // To store data globally for sorting
-let sortDirection = {}; // To track sorting direction per column
 
 // Fetch the Excel file and read its content
 fetch(excelFilePath)
@@ -33,10 +32,9 @@ function displayExcelData(data) {
 
   // Populate table header (first row of Excel file)
   if (data.length > 0) {
-    data[0].forEach((header, index) => {
+    data[0].forEach((header) => {
       const th = document.createElement('th');
       th.textContent = header;
-      th.addEventListener('click', () => sortTableByColumn(index)); // Add click event for sorting
       tableHead.appendChild(th);
     });
 
@@ -63,37 +61,27 @@ function isNumericColumn(columnIndex) {
   });
 }
 
-// Function to sort table by a specific column
-function sortTableByColumn(columnIndex) {
-  const isAscending = sortDirection[columnIndex] === 'asc'; // Check current sort direction
-  const isNumeric = isNumericColumn(columnIndex); // Check if the column contains numbers
+// Function to filter table by price
+function filterByPrice() {
+  const filterValue = document.getElementById('price-filter').value; // Get selected filter value
+  const priceColumnIndex = 1; // Assuming price is in the second column (index 1)
 
-  // Sort the data based on the selected column
   const sortedData = jsonData.slice(1).sort((a, b) => {
-    const cellA = a[columnIndex] ? a[columnIndex].toString().toLowerCase() : '';
-    const cellB = b[columnIndex] ? b[columnIndex].toString().toLowerCase() : '';
+    const cellA = a[priceColumnIndex] ? a[priceColumnIndex] : 0;
+    const cellB = b[priceColumnIndex] ? b[priceColumnIndex] : 0;
 
-    if (isNumeric) {
-      // If the column contains numbers, compare numerically
-      return isAscending ? (Number(cellA) - Number(cellB)) : (Number(cellB) - Number(cellA));
+    if (filterValue === 'asc') {
+      return Number(cellA) - Number(cellB); // Low to High
+    } else if (filterValue === 'desc') {
+      return Number(cellB) - Number(cellA); // High to Low
     } else {
-      // If the column contains strings, compare lexicographically
-      if (cellA < cellB) return isAscending ? -1 : 1;
-      if (cellA > cellB) return isAscending ? 1 : -1;
-      return 0;
+      return 0; // No sorting
     }
   });
-
-  // Toggle the sorting direction for the next click
-  sortDirection[columnIndex] = isAscending ? 'desc' : 'asc';
-
-  // Update the sorting indicators in the headers
-  const thElements = document.querySelectorAll('#excel-data thead th');
-  thElements.forEach(th => th.classList.remove('asc', 'desc')); // Remove sorting classes from all headers
-
-  const targetTh = document.querySelector(`#excel-data thead th:nth-child(${columnIndex + 1})`);
-  targetTh.classList.add(isAscending ? 'desc' : 'asc'); // Add the correct sorting class (asc or desc)
 
   // Display sorted data
   displayExcelData([jsonData[0], ...sortedData]);
 }
+
+// Fetch phone numbers on page load
+fetch(excelFilePath);
