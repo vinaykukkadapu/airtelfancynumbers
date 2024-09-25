@@ -9,7 +9,7 @@ body {
 
 /* Navigation Bar Styling */
 .navbar {
-    background-color: #4caf50; /* Green background for navbar */
+    background-color: #E90000; /* Red background for navbar */
     padding: 10px 0; /* Padding for the navbar */
     text-align: center; /* Center align navbar items */
     position: sticky; /* Stick navbar at the top on scroll */
@@ -32,13 +32,14 @@ body {
     color: white; /* White text for links */
     text-decoration: none; /* Remove underline */
     font-size: 18px; /* Font size for links */
-    transition: background-color 0.3s; /* Smooth transition for background */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and scale */
     padding: 8px 15px; /* Padding for better click area */
 }
 
 .navbar ul li a:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #B80000; /* Darker red on hover */
     border-radius: 4px; /* Rounded corners for hover effect */
+    transform: scale(1.1); /* Slightly scale up the link on hover */
 }
 
 /* Container for the content */
@@ -77,7 +78,7 @@ th, td {
 
 /* Header cell styling */
 th {
-  background-color: #4caf50; /* Green background for header */
+  background-color: #E90000; /* Red background for header */
   color: white; /* White text color for header */
 }
 
@@ -103,7 +104,7 @@ tbody tr:hover {
 }
 
 .contact-section h2 {
-  color: #4caf50; /* Green color for the heading */
+  color: #E90000; /* Red color for the heading */
   margin-bottom: 10px; /* Space below the heading */
 }
 
@@ -123,7 +124,7 @@ tbody tr:hover {
 }
 
 .contact-section ul li a {
-  color: #4caf50; /* Green color for links */
+  color: #E90000; /* Red color for links */
   text-decoration: none; /* Remove underline from links */
 }
 
