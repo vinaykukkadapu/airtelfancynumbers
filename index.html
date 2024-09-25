@@ -3,41 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airtel Fancy Numbers</title>
+    <title>Fancy Numbers List</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script> <!-- Include XLSX library -->
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <div class="navbar">
         <ul>
-            <li><a href="#fancy-numbers">Fancy Numbers List</a></li>
+            <li><a href="#fancynumbers">Fancy Numbers List</a></li>
             <li><a href="#contact">Contact Details</a></li>
         </ul>
-    </nav>
+    </div>
 
-    <div class="container" id="fancy-numbers">
-        <h1>Available Airtel Fancy Numbers</h1>
+    <div class="container">
+        <h1 id="fancynumbers">Fancy Numbers List</h1>
+        
+        <!-- Dropdown Filter for Price Sorting -->
+        <label for="price-filter">Sort by Price:</label>
+        <select id="price-filter" onchange="filterByPrice()">
+            <option value="">Select...</option>
+            <option value="asc">Low to High</option>
+            <option value="desc">High to Low</option>
+        </select>
+
         <table id="excel-data">
             <thead>
-                <tr></tr>
+                <tr>
+                    <!-- Table headers will be populated here -->
+                </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <!-- Phone numbers will be dynamically inserted here -->
+            </tbody>
         </table>
     </div>
 
-    <!-- Contact Section Start -->
     <div class="contact-section" id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any inquiries about the available fancy numbers, feel free to reach out to us:</p>
+        <h2>Contact Details</h2>
+        <p>If you have any questions, feel free to reach out!</p>
         <ul>
-            <li>Email: <a href="mailto:info@numberbazaar.com">info@numberbazaar.com</a></li>
-            <li>Phone: +91 123 456 7890</li>
-            <li>Address: 123 Fancy Number Street, Hyderabad, India</li>
+            <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
+            <li>Phone: <a href="tel:+123456789">+123456789</a></li>
         </ul>
     </div>
-    <!-- Contact Section End -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
