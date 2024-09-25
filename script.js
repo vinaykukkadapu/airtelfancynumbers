@@ -56,12 +56,12 @@ function displayExcelData(data) {
 // Function to filter table by price
 function filterByPrice() {
   const filterValue = document.getElementById('price-filter').value; // Get selected filter value
-  const priceColumnIndex = 3; // Assuming price is in the second column (index 1)
+  const priceColumnIndex = 3; // Assuming price is in the fourth column (index 3)
 
   if (filterValue) {
     const sortedData = jsonData.slice(1).sort((a, b) => {
-      const cellA = a[priceColumnIndex] ? Number(a[priceColumnIndex]) : 0;
-      const cellB = b[priceColumnIndex] ? Number(b[priceColumnIndex]) : 0;
+      const cellA = a[priceColumnIndex] ? parseFloat(a[priceColumnIndex].toString().replace(/,/g, '')) : 0; // Convert to number
+      const cellB = b[priceColumnIndex] ? parseFloat(b[priceColumnIndex].toString().replace(/,/g, '')) : 0; // Convert to number
 
       return filterValue === 'asc' ? cellA - cellB : cellB - cellA; // Sort based on the selected filter
     });
