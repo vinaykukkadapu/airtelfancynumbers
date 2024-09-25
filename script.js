@@ -55,18 +55,33 @@ function displayExcelData(data) {
   }
 }
 
+// Function to determine if a column contains numbers
+function isNumericColumn(columnIndex) {
+  return jsonData.slice(1).every(row => {
+    const cell = row[columnIndex];
+    return !isNaN(cell) && cell !== null && cell !== '';
+  });
+}
+
 // Function to sort table by a specific column
 function sortTableByColumn(columnIndex) {
   const isAscending = sortDirection[columnIndex] === 'asc'; // Check current sort direction
+  const isNumeric = isNumericColumn(columnIndex); // Check if the column contains numbers
 
   // Sort the data based on the selected column
   const sortedData = jsonData.slice(1).sort((a, b) => {
     const cellA = a[columnIndex] ? a[columnIndex].toString().toLowerCase() : '';
     const cellB = b[columnIndex] ? b[columnIndex].toString().toLowerCase() : '';
-    
-    if (cellA < cellB) return isAscending ? -1 : 1;
-    if (cellA > cellB) return isAscending ? 1 : -1;
-    return 0;
+
+    if (isNumeric) {
+      // If the column contains numbers, compare numerically
+      return isAscending ? (Number(cellA) - Number(cellB)) : (Number(cellB) - Number(cellA));
+    } else {
+      // If the column contains strings, compare lexicographically
+      if (cellA < cellB) return isAscending ? -1 : 1;
+      if (cellA > cellB) return isAscending ? 1 : -1;
+      return 0;
+    }
   });
 
   // Toggle the sorting direction for the next click
