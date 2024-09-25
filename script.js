@@ -56,7 +56,7 @@ function displayExcelData(data) {
 // Function to filter table by price
 function filterByPrice() {
   const filterValue = document.getElementById('price-filter').value; // Get selected filter value
-  const priceColumnIndex = 1; // Assuming price is in the second column (index 1)
+  const priceColumnIndex = 3; // Assuming price is in the second column (index 1)
 
   if (filterValue) {
     const sortedData = jsonData.slice(1).sort((a, b) => {
