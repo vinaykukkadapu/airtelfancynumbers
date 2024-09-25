@@ -1,10 +1,10 @@
 /* Body styling */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 /* Navigation Bar Styling */
@@ -39,95 +39,99 @@ body {
 .navbar ul li a:hover {
     background-color: #B80000; /* Darker red on hover */
     border-radius: 4px; /* Rounded corners for hover effect */
-    transform: scale(1.1); /* Slightly scale up the link on hover */
 }
 
 /* Container for the content */
 .container {
-  max-width: 800px; /* Maximum width of the container */
-  margin: 0 auto; /* Center the container */
-  padding: 20px; /* Padding inside the container */
-  background-color: #fff; /* White background for the container */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 800px; /* Maximum width of the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Padding inside the container */
+    background-color: #fff; /* White background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 /* Heading styling */
 h1 {
-  text-align: center; /* Center align the heading */
-  margin-bottom: 20px; /* Space below the heading */
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+/* Dropdown Filter styling */
+label {
+    font-size: 16px; /* Font size for label */
+    margin-right: 10px; /* Space between label and dropdown */
+}
+
+select {
+    padding: 10px; /* Padding inside dropdown */
+    font-size: 16px; /* Font size for dropdown */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below dropdown */
 }
 
 /* Table styling */
 table {
-  width: 100%; /* Full width table */
-  border-collapse: collapse; /* Merge borders */
-  margin-top: 20px; /* Space above the table */
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Merge borders */
+    margin-top: 20px; /* Space above the table */
 }
 
 /* Table borders */
 table, th, td {
-  border: 1px solid #ddd; /* Light gray borders */
+    border: 1px solid #ddd; /* Light gray borders */
 }
 
 /* Padding and text alignment for table cells */
 th, td {
-  padding: 12px; /* Padding inside cells */
-  text-align: center; /* Center align text in cells */
+    padding: 12px; /* Padding inside cells */
+    text-align: center; /* Center align text in cells */
 }
 
 /* Header cell styling */
 th {
-  background-color: #E90000; /* Red background for header */
-  color: white; /* White text color for header */
+    background-color: #E90000; /* Red background for header */
+    color: white; /* White text color for header */
 }
 
 /* Even row styling */
 tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light gray for even rows */
+    background-color: #f2f2f2; /* Light gray for even rows */
 }
 
 /* Hover effect for table rows */
 tbody tr:hover {
-  background-color: #ddd; /* Darker gray on hover */
+    background-color: #ddd; /* Darker gray on hover */
 }
 
-/* Contact Section Styling */
+/* Contact section styling */
 .contact-section {
-  max-width: 800px; /* Maximum width for the contact section */
-  margin: 50px auto 0; /* Center the contact section and add top margin */
-  padding: 20px; /* Padding inside the contact section */
-  background-color: #fff; /* White background for the contact section */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  text-align: center; /* Center text in the contact section */
+    margin-top: 40px; /* Space above contact section */
+    padding: 20px; /* Padding inside contact section */
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .contact-section h2 {
-  color: #E90000; /* Red color for the heading */
-  margin-bottom: 10px; /* Space below the heading */
-}
-
-.contact-section p {
-  font-size: 16px; /* Font size for paragraph text */
-  margin-bottom: 20px; /* Space below the paragraph */
+    margin-top: 0; /* Remove margin at the top of the heading */
 }
 
 .contact-section ul {
-  list-style-type: none; /* Remove bullet points */
-  padding: 0; /* Remove padding */
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
 }
 
 .contact-section ul li {
-  font-size: 16px; /* Font size for list items */
-  margin: 10px 0; /* Space between list items */
+    margin-bottom: 10px; /* Space between list items */
 }
 
 .contact-section ul li a {
-  color: #E90000; /* Red color for links */
-  text-decoration: none; /* Remove underline from links */
+    color: #E90000; /* Red color for links */
+    text-decoration: none; /* Remove underline for links */
 }
 
 .contact-section ul li a:hover {
-  text-decoration: underline; /* Underline on hover for links */
+    text-decoration: underline; /* Underline on hover for links */
 }
