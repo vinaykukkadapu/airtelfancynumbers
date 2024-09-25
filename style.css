@@ -96,3 +96,32 @@ tbody tr:hover {
 .contact-section ul li a:hover {
   text-decoration: underline; /* Underline on hover for links */
 }
+
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #4caf50; /* Green background for navbar */
+    padding: 10px 0; /* Padding for the navbar */
+    text-align: center; /* Center align navbar items */
+}
+
+.navbar ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.navbar ul li {
+    display: inline; /* Display items in a row */
+    margin: 0 20px; /* Space between items */
+}
+
+.navbar ul li a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
