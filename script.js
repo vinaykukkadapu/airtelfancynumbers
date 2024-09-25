@@ -2,6 +2,7 @@
 const excelFilePath = 'https://raw.githubusercontent.com/vinaykukkadapu/airtelfancynumbers/main/Book1.xlsx';
 
 let jsonData = []; // To store data globally for sorting
+let sortDirection = {}; // To track sorting direction per column
 
 // Fetch the Excel file and read its content
 fetch(excelFilePath)
@@ -56,7 +57,9 @@ function displayExcelData(data) {
 
 // Function to sort table by a specific column
 function sortTableByColumn(columnIndex) {
-  const isAscending = document.querySelector(`#excel-data thead th:nth-child(${columnIndex + 1})`).classList.contains('asc'); // Check current sort direction
+  const isAscending = sortDirection[columnIndex] === 'asc'; // Check current sort direction
+
+  // Sort the data based on the selected column
   const sortedData = jsonData.slice(1).sort((a, b) => {
     const cellA = a[columnIndex] ? a[columnIndex].toString().toLowerCase() : '';
     const cellB = b[columnIndex] ? b[columnIndex].toString().toLowerCase() : '';
@@ -66,18 +69,15 @@ function sortTableByColumn(columnIndex) {
     return 0;
   });
 
-  // Toggle sort direction
+  // Toggle the sorting direction for the next click
+  sortDirection[columnIndex] = isAscending ? 'desc' : 'asc';
+
+  // Update the sorting indicators in the headers
   const thElements = document.querySelectorAll('#excel-data thead th');
-  thElements.forEach(th => th.classList.remove('asc', 'desc')); // Clear all sort states
+  thElements.forEach(th => th.classList.remove('asc', 'desc')); // Remove sorting classes from all headers
 
   const targetTh = document.querySelector(`#excel-data thead th:nth-child(${columnIndex + 1})`);
-  if (isAscending) {
-    targetTh.classList.remove('asc');
-    targetTh.classList.add('desc');
-  } else {
-    targetTh.classList.remove('desc');
-    targetTh.classList.add('asc');
-  }
+  targetTh.classList.add(isAscending ? 'desc' : 'asc'); // Add the correct sorting class (asc or desc)
 
   // Display sorted data
   displayExcelData([jsonData[0], ...sortedData]);
