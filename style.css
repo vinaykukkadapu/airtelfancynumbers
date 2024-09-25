@@ -106,13 +106,16 @@ tbody tr:hover {
 }
 
 /* Contact section styling */
-.contact {
+.contact-section {
     text-align: center; /* Center the text within the contact section */
-    margin-top: 20px; /* Add some space above the contact section */
+    margin: 40px 0; /* Add vertical space above and below the section */
     padding: 20px; /* Add padding for better spacing */
     border: 1px solid #ddd; /* Optional: Add a border for visibility */
     border-radius: 8px; /* Optional: Round the corners */
     background-color: #f9f9f9; /* Optional: Set a background color */
+    max-width: 600px; /* Limit the width of the contact section */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
 }
 
 .contact-section h2 {
@@ -135,4 +138,9 @@ tbody tr:hover {
 
 .contact-section ul li a:hover {
     text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Enable smooth scrolling */
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling */
 }
