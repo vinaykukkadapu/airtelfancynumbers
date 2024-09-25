@@ -56,7 +56,7 @@ function displayExcelData(data) {
 
 // Function to sort table by a specific column
 function sortTableByColumn(columnIndex) {
-  const isAscending = tableHead.children[columnIndex].classList.contains('asc'); // Check current sort direction
+  const isAscending = document.querySelector(`#excel-data thead th:nth-child(${columnIndex + 1})`).classList.contains('asc'); // Check current sort direction
   const sortedData = jsonData.slice(1).sort((a, b) => {
     const cellA = a[columnIndex] ? a[columnIndex].toString().toLowerCase() : '';
     const cellB = b[columnIndex] ? b[columnIndex].toString().toLowerCase() : '';
@@ -67,12 +67,16 @@ function sortTableByColumn(columnIndex) {
   });
 
   // Toggle sort direction
+  const thElements = document.querySelectorAll('#excel-data thead th');
+  thElements.forEach(th => th.classList.remove('asc', 'desc')); // Clear all sort states
+
+  const targetTh = document.querySelector(`#excel-data thead th:nth-child(${columnIndex + 1})`);
   if (isAscending) {
-    tableHead.children[columnIndex].classList.remove('asc');
-    tableHead.children[columnIndex].classList.add('desc');
+    targetTh.classList.remove('asc');
+    targetTh.classList.add('desc');
   } else {
-    tableHead.children[columnIndex].classList.remove('desc');
-    tableHead.children[columnIndex].classList.add('asc');
+    targetTh.classList.remove('desc');
+    targetTh.classList.add('asc');
   }
 
   // Display sorted data
