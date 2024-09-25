@@ -1,20 +1,20 @@
 /* Body styling */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9; /* Light background */
-  color: #333; /* Dark text color */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
 /* Container for the content */
 .container {
   max-width: 800px; /* Maximum width of the container */
-  margin: 0 auto; /* Center the container horizontally */
-  padding: 20px; /* Add padding inside the container */
-  background-color: #fff; /* White background for content */
-  border-radius: 8px; /* Rounded corners for container */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth effect */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Padding inside the container */
+  background-color: #fff; /* White background for the container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 /* Heading styling */
@@ -25,44 +25,74 @@ h1 {
 
 /* Table styling */
 table {
-  width: 100%; /* Table takes full width of the container */
-  border-collapse: collapse; /* Merge table borders */
+  width: 100%; /* Full width table */
+  border-collapse: collapse; /* Merge borders */
   margin-top: 20px; /* Space above the table */
 }
 
 /* Table borders */
 table, th, td {
-  border: 1px solid #ddd; /* Light gray borders for table, headers, and cells */
+  border: 1px solid #ddd; /* Light gray borders */
 }
 
 /* Padding and text alignment for table cells */
 th, td {
-  padding: 12px; /* Padding inside the cells */
+  padding: 12px; /* Padding inside cells */
   text-align: center; /* Center align text in cells */
 }
 
 /* Header cell styling */
 th {
   background-color: #4caf50; /* Green background for header */
-  color: white; /* White text color for headers */
-  cursor: pointer; /* Make headers clickable for sorting */
+  color: white; /* White text color for header */
 }
 
 /* Even row styling */
 tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light gray background for even rows */
+  background-color: #f2f2f2; /* Light gray for even rows */
 }
 
 /* Hover effect for table rows */
 tbody tr:hover {
-  background-color: #ddd; /* Darker gray background on row hover */
+  background-color: #ddd; /* Darker gray on hover */
 }
 
-/* Sorting arrows for headers */
-th.asc::after {
-  content: ' \25B2'; /* Up arrow for ascending */
+/* Contact Section Styling */
+.contact-section {
+  max-width: 800px;
+  margin: 50px auto 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-th.desc::after {
-  content: ' \25BC'; /* Down arrow for descending */
+.contact-section h2 {
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.contact-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact-section ul li {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.contact-section ul li a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.contact-section ul li a:hover {
+  text-decoration: underline;
 }
