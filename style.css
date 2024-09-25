@@ -45,6 +45,7 @@ th, td {
 th {
   background-color: #4caf50; /* Green background for header */
   color: white; /* White text color for header */
+  cursor: pointer; /* Make headers clickable */
 }
 
 /* Even row styling */
@@ -55,4 +56,13 @@ tbody tr:nth-child(even) {
 /* Hover effect for table rows */
 tbody tr:hover {
   background-color: #ddd; /* Darker gray on hover */
+}
+
+/* Sorting indicators */
+th.asc::after {
+  content: ' \25B2'; /* Up arrow for ascending */
+}
+
+th.desc::after {
+  content: ' \25BC'; /* Down arrow for descending */
 }
