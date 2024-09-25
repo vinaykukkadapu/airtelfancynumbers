@@ -7,6 +7,40 @@ body {
   padding: 0;
 }
 
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #4caf50; /* Green background for navbar */
+    padding: 10px 0; /* Padding for the navbar */
+    text-align: center; /* Center align navbar items */
+    position: sticky; /* Stick navbar at the top on scroll */
+    top: 0; /* Position it at the top */
+    z-index: 1000; /* Keep it above other elements */
+}
+
+.navbar ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.navbar ul li {
+    display: inline; /* Display items in a row */
+    margin: 0 20px; /* Space between items */
+}
+
+.navbar ul li a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
+    transition: background-color 0.3s; /* Smooth transition for background */
+    padding: 8px 15px; /* Padding for better click area */
+}
+
+.navbar ul li a:hover {
+    background-color: #45a049; /* Darker green on hover */
+    border-radius: 4px; /* Rounded corners for hover effect */
+}
+
 /* Container for the content */
 .container {
   max-width: 800px; /* Maximum width of the container */
@@ -95,33 +129,4 @@ tbody tr:hover {
 
 .contact-section ul li a:hover {
   text-decoration: underline; /* Underline on hover for links */
-}
-
-
-/* Navigation Bar Styling */
-.navbar {
-    background-color: #4caf50; /* Green background for navbar */
-    padding: 10px 0; /* Padding for the navbar */
-    text-align: center; /* Center align navbar items */
-}
-
-.navbar ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-}
-
-.navbar ul li {
-    display: inline; /* Display items in a row */
-    margin: 0 20px; /* Space between items */
-}
-
-.navbar ul li a {
-    color: white; /* White text for links */
-    text-decoration: none; /* Remove underline */
-    font-size: 18px; /* Font size for links */
-}
-
-.navbar ul li a:hover {
-    text-decoration: underline; /* Underline on hover */
 }
