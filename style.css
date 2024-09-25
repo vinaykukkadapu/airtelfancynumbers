@@ -59,40 +59,40 @@ tbody tr:hover {
 
 /* Contact Section Styling */
 .contact-section {
-  max-width: 800px;
-  margin: 50px auto 0;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  max-width: 800px; /* Maximum width for the contact section */
+  margin: 50px auto 0; /* Center the contact section and add top margin */
+  padding: 20px; /* Padding inside the contact section */
+  background-color: #fff; /* White background for the contact section */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center; /* Center text in the contact section */
 }
 
 .contact-section h2 {
-  color: #4caf50;
-  margin-bottom: 10px;
+  color: #4caf50; /* Green color for the heading */
+  margin-bottom: 10px; /* Space below the heading */
 }
 
 .contact-section p {
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 16px; /* Font size for paragraph text */
+  margin-bottom: 20px; /* Space below the paragraph */
 }
 
 .contact-section ul {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
 }
 
 .contact-section ul li {
-  font-size: 16px;
-  margin: 10px 0;
+  font-size: 16px; /* Font size for list items */
+  margin: 10px 0; /* Space between list items */
 }
 
 .contact-section ul li a {
-  color: #4caf50;
-  text-decoration: none;
+  color: #4caf50; /* Green color for links */
+  text-decoration: none; /* Remove underline from links */
 }
 
 .contact-section ul li a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Underline on hover for links */
 }
