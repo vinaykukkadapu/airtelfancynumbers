@@ -1,7 +1,7 @@
 // Path to the locally stored Excel file in the repository
 const excelFilePath = 'https://raw.githubusercontent.com/vinaykukkadapu/airtelfancynumbers/main/Book1.xlsx';
 
-let jsonData = []; // To store data globally for sorting
+let jsonData = []; // To store data globally
 
 // Fetch the Excel file and read its content
 fetch(excelFilePath)
@@ -53,35 +53,23 @@ function displayExcelData(data) {
   }
 }
 
-// Function to determine if a column contains numbers
-function isNumericColumn(columnIndex) {
-  return jsonData.slice(1).every(row => {
-    const cell = row[columnIndex];
-    return !isNaN(cell) && cell !== null && cell !== '';
-  });
-}
-
 // Function to filter table by price
 function filterByPrice() {
   const filterValue = document.getElementById('price-filter').value; // Get selected filter value
   const priceColumnIndex = 1; // Assuming price is in the second column (index 1)
 
-  const sortedData = jsonData.slice(1).sort((a, b) => {
-    const cellA = a[priceColumnIndex] ? a[priceColumnIndex] : 0;
-    const cellB = b[priceColumnIndex] ? b[priceColumnIndex] : 0;
+  if (filterValue) {
+    const sortedData = jsonData.slice(1).sort((a, b) => {
+      const cellA = a[priceColumnIndex] ? Number(a[priceColumnIndex]) : 0;
+      const cellB = b[priceColumnIndex] ? Number(b[priceColumnIndex]) : 0;
 
-    if (filterValue === 'asc') {
-      return Number(cellA) - Number(cellB); // Low to High
-    } else if (filterValue === 'desc') {
-      return Number(cellB) - Number(cellA); // High to Low
-    } else {
-      return 0; // No sorting
-    }
-  });
+      return filterValue === 'asc' ? cellA - cellB : cellB - cellA; // Sort based on the selected filter
+    });
 
-  // Display sorted data
-  displayExcelData([jsonData[0], ...sortedData]);
+    // Display sorted data
+    displayExcelData([jsonData[0], ...sortedData]);
+  } else {
+    // If no filter is selected, display the original data
+    displayExcelData(jsonData);
+  }
 }
-
-// Fetch phone numbers on page load
-fetch(excelFilePath);
